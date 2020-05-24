@@ -23,7 +23,7 @@ The feasible region defined by these constraints is plotted at right: *x*<sub>2<
 
 (This problem is especially trivial, because by formulating it in terms of the cube root of *x*<sub>2</sub> you can turn it into a linear-programming problem, but we won't do that here.)
 
-In principle, we don't need the bound constraint *x*<sub>2</sub>≥0, since the nonlinear constraints already imply a positive-*x*<sub>2</sub> feasible region. However, NLopt doesn't guarantee that, on the way to finding the optimum, it won't violate the nonlinear constraints at some intermediate steps, while it *does* guarantee that all intermediate steps will satisfy the bound constraints. So, we will explicitly impose *x*<sub>2</sub>≥0 in order to ensure that the √*x*<sub>2</sub> in our objective is real.
+In principle, we don't need the bound constraint *x*<sub>2</sub>≥0, since the nonlinear constraints already imply a positive-*x*<sub>2</sub> feasible region. However, NLopt doesn't guarantee that, on the way to finding the optimum, it will violate the nonlinear constraints at some intermediate steps, while it *does* guarantee that all intermediate steps will satisfy the bound constraints. So, we will explicitly impose *x*<sub>2</sub>≥0 in order to ensure that the √*x*<sub>2</sub> in our objective is real.
 
 **Note:** The objective function here is not differentiable at *x*<sub>2</sub>=0. This doesn't cause problems in the examples below, but may cause problems with some other algorithms if they try to evaluate the gradient at *x*<sub>2</sub>=0 (e.g. I've seen it cause AUGLAG with a gradient-based solver to fail). To prevent this, you might want to use a small nonzero lower bound instead, e.g. *x*<sub>2</sub>≥10<sup>−6</sup>.
 
